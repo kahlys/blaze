@@ -1,0 +1,15 @@
+load("@rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "hello",
+    srcs = ["hello.go"],
+    importpath = "github.com/kahlys/blaze/go/hello",
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "hello_test",
+    srcs = ["hello_test.go"],
+    embed = [":hello"],
+    deps = ["@com_github_stretchr_testify//assert"],
+)
